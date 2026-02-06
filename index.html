@@ -6,6 +6,7 @@
     <style>
       body {
         height: 100vh;
+        width: 100vw;
         margin: 0;
         display: flex;
         justify-content: center;
@@ -17,10 +18,13 @@
       }
 
       .card {
-        background: #fff;
+        background: url('WhatsApp Image 2026-02-06 at 12.58.07 PM.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         padding: 20px;
-        width: 380px;
-        max-width: 90%; /* Responsive width */
+        width: 380px; /* Desktop width */
+        max-width: 90%; /* Responsive fallback */
         border-radius: 20px;
         text-align: center;
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -56,7 +60,7 @@
         font-size: 16px;
         cursor: pointer;
         position: absolute;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
       }
 
@@ -87,42 +91,48 @@
         border-radius: 15px;
       }
 
-      
+      /* Mobile responsiveness - only width/padding/font-size changes */
+      @media (min-width: 430px)and (max-width: 1024px) {
+        .card {
+          padding: 20px;
+          width: 90%; 
+          /* height: 50vh; */
+          
+        }
+        
 
-      /* Responsive for mobile */
-      @media (max-width: 480px) {
         .btn-wrapper {
-          height: 120px;
+          height: 300px;
         }
 
         .yes-btn {
           left: 10px;
           top: 0;
           padding: 8px 16px;
-          font-size: 14px;
+          font-size: 40px;
         }
 
         .no-btn {
           left: 100px;
           top: 0;
           padding: 8px 16px;
-          font-size: 14px;
+          font-size: 40px;
         }
 
         h2 {
-          font-size: 20px;
+          font-size: 40px;
         }
 
         p {
-          font-size: 14px;
+          font-size: 35px;
         }
       }
     </style>
   </head>
   <body>
     <div class="card" id="card">
-      <h2>Hi Sweetheart 💖</h2>
-      <p>Kya tum meri saath coffee pe chaloge? ☕😊</p>
+      <h2>Ek Question Hai 😜💖</h2>
+      <p>Kya tum meri baat maanoge?💖</p>
 
       <div class="btn-wrapper" id="wrapper">
         <button class="yes-btn" onclick="showVideo()">Yes</button>
@@ -131,7 +141,7 @@
 
       <div class="video-container" id="videoBox">
         <video autoplay muted loop>
-          <source src="154135-807166717_medium.mp4" type="video/mp4">
+          <source src="154135-807166717_medium.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -159,7 +169,7 @@
         } while (
           Math.hypot(
             x - (newX + btnRect.width / 2),
-            y - (newY + btnRect.height / 2)
+            y - (newY + btnRect.height / 2),
           ) < buffer
         );
 
@@ -170,7 +180,7 @@
       wrapper.addEventListener("mousemove", (e) => {
         moveButton(
           e.clientX - wrapper.getBoundingClientRect().left,
-          e.clientY - wrapper.getBoundingClientRect().top
+          e.clientY - wrapper.getBoundingClientRect().top,
         );
       });
 
@@ -178,14 +188,12 @@
         const touch = e.touches[0];
         moveButton(
           touch.clientX - wrapper.getBoundingClientRect().left,
-          touch.clientY - wrapper.getBoundingClientRect().top
+          touch.clientY - wrapper.getBoundingClientRect().top,
         );
       });
 
       function showVideo() {
         videoBox.style.display = "block";
-
-       
       }
     </script>
   </body>
